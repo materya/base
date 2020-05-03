@@ -1,9 +1,10 @@
 #!make
 
 PM = npm
-RM = rm -rf
+RM = rm
 
-PRERELEASE_FLAG ?= beta
+PRERELEASE_TAG ?= beta
+PUBLISH_FLAGS = publish --access public
 
 MODULES = node_modules
 DIST = dist
@@ -20,11 +21,11 @@ $(DIST): $(MODULES)
 
 .PHONY: clean
 clean:
-	$(RM) $(DIST) $(COVERAGE)
+	$(RM) -rf $(DIST) $(COVERAGE)
 
 .PHONY: clean-all
 clean-all:
-	$(RM) $(MODULES)
+	$(RM) -rf $(MODULES)
 
 .PHONY: test
 test:
@@ -35,12 +36,17 @@ coverage:
 
 .PHONY: release
 release:
+ifneq (,$(findstring n,$(MAKEFLAGS)))
+	+$(PM) run release -- --dry-run
+	+$(PM) $(PUBLISH_FLAGS) --dry-run
+else
 	$(PM) run release
 	git push --follow-tags origin master
-	npm publish --access public
+	$(PM) $(PUBLISH_FLAGS)
+endif
 
 .PHONY: prerelease
 prerelease:
-	$(PM) run release -- --prerelease $(PRERELEASE_FLAG)
+	$(PM) run release -- --prerelease $(PRERELEASE_TAG)
 	git push --follow-tags origin master
-	npm publish --tag prerelease --access public
+	$(PM) $(PUBLISH_FLAGS) --tag prerelease
