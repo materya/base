@@ -35,7 +35,7 @@ coverage:
 	$(PM) run coverage
 
 .PHONY: release
-release:
+release: $(DIST)
 ifneq (,$(findstring n,$(MAKEFLAGS)))
 	+$(PM) run release -- --dry-run
 	+$(PM) $(PUBLISH_FLAGS) --dry-run
@@ -46,7 +46,7 @@ else
 endif
 
 .PHONY: prerelease
-prerelease:
+prerelease: $(DIST)
 	$(PM) run release -- --prerelease $(PRERELEASE_TAG)
 	git push --follow-tags origin master
 	$(PM) $(PUBLISH_FLAGS) --tag prerelease
