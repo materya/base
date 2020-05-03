@@ -1,5 +1,6 @@
 *.log
 .editorconfig
+.env*
 .eslintrc.js
 .github
 .gitattributes
