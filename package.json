@@ -1,7 +1,7 @@
 {
   "name": "@materya/base",
   "description": "A collection of useful modules with a no-dependency, clean, tested and lightweight code philosophy.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": "https://github.com/materya/base",
   "url": "https://github.com/materya/base",
   "email": "sylver@materya.io",
