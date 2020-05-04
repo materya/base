@@ -1,8 +1,8 @@
 import * as fs from 'fs'
 import { expect } from 'chai'
 
-import { find } from 'src/fs'
-import { FileNotFoundError } from 'src/errors'
+import { find } from '../../src/fs'
+import { FileNotFoundError } from '../../src/errors'
 
 const basePath = '/tmp/materya_tests/fs.find'
 const filename = 'conf.json'
