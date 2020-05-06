@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/materya/base/compare/v1.2.0...v1.3.0) (2020-05-06)
+
+
+### Features
+
+* add `env` module ([8657916](https://github.com/materya/base/commit/8657916))
+
+
+### Tests
+
+* move deprectated mocha.opts to .mocharc.js ([7054540](https://github.com/materya/base/commit/7054540))
+
+
+
 ## [1.2.0](https://github.com/materya/base/compare/v1.1.1...v1.2.0) (2020-05-04)
 
 
