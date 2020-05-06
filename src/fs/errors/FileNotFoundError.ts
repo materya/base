@@ -1,4 +1,4 @@
-import BaseError from './BaseError'
+import BaseError from '../../errors/BaseError'
 
 /**
  * Error raised when a file does not exist in the filesystem.

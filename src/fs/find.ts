@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-import { FileNotFoundError } from '../errors'
+import { FileNotFoundError } from './errors'
 
 /**
  * Find a given file in a given path or anywhere up the tree.
