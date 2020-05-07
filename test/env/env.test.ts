@@ -3,17 +3,36 @@ import { expect } from 'chai'
 import { env } from '../../src'
 import { MissingEnvironmentError } from '../../src/env/errors'
 
+const name = 'HELLO'
+const value = 'world'
+const defaultValue = 'wrong'
+
 describe('env', () => {
   describe('get', () => {
-    it('should get an existing environment variable', () => {
-      const value = 'world'
-      process.env.HELLO = value
-      expect(env.get('HELLO')).to.equals(value)
+    beforeEach(() => {
+      delete process.env[name]
     })
 
-    it('should throw an error if the environment variable is not set', () => {
-      const name = 'HELLOWORLD'
-      expect(() => env.get(name)).to.throw(MissingEnvironmentError)
+    context('without `defaultValue` provided', () => {
+      it('should get an existing environment variable', () => {
+        process.env[name] = value
+        expect(env.get(name)).to.equals(value)
+      })
+
+      it('should throw an error if environment variable not set', () => {
+        expect(() => env.get(name)).to.throw(MissingEnvironmentError)
+      })
+    })
+
+    context('with `defaultValue` provided', () => {
+      it('should get an existing environment variable', () => {
+        process.env[name] = value
+        expect(env.get(name, defaultValue)).to.equals(value)
+      })
+
+      it('should use the default value if env variable not set', () => {
+        expect(env.get(name, defaultValue)).to.equals(defaultValue)
+      })
     })
   })
 })
