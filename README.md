@@ -1,4 +1,4 @@
-# @materya/base
+# @materya/carbon
 
 [![NPM version][npm-image]][npm-url]
 [![Dependency Status][david-image]][david-url]
@@ -12,7 +12,7 @@ lightweight code philosophy.
 ## Install
 
 ```
-npm i @materya/base
+npm i @materya/carbon
 ```
 
 ## Modules
@@ -33,19 +33,19 @@ Module dedicated to manage `process.env` and access environment variables.
 
 | name | params | returns | throws | description |
 |-|-|-|-|-|
-| `get` | `name`, `[defaultValue]` | Variable value or default value | `MissingEnvironmentError` | Get a given `name` env variable. Will throw unless a `defaultValue` is provided.. |
+| `get` | `name`, `[defaultValue]` | Variable value or default value | `MissingEnvironmentError` | Get a given `name` env variable. Will throw unless a `defaultValue` is provided. |
 
 ## License
 
 [GPL-3.0](LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/@materya/base.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@materya/base
-[david-image]: https://img.shields.io/david/materya/base.svg?style=flat-square
-[david-url]: https://david-dm.org/materya/base
-[snyk-image]: https://snyk.io/test/github/materya/base/badge.svg?style=flat-square
-[snyk-url]: https://app.snyk.io/test/github/materya/base?targetFile=package.json
-[codecov-image]: https://img.shields.io/codecov/c/github/materya/base/master.svg?style=flat-square
-[codecov-url]: https://codecov.io/gh/materya/base
-[license-image]: https://img.shields.io/npm/l/@materya/base.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/@materya/carbon.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@materya/carbon
+[david-image]: https://img.shields.io/david/materya/carbon.svg?style=flat-square
+[david-url]: https://david-dm.org/materya/carbon
+[snyk-image]: https://snyk.io/test/github/materya/carbon/badge.svg?style=flat-square
+[snyk-url]: https://app.snyk.io/test/github/materya/carbon?targetFile=package.json
+[codecov-image]: https://img.shields.io/codecov/c/github/materya/carbon/master.svg?style=flat-square
+[codecov-url]: https://codecov.io/gh/materya/carbon
+[license-image]: https://img.shields.io/npm/l/@materya/carbon.svg?style=flat-square
 [license-url]: LICENSE
