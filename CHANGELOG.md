@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/materya/carbon/compare/v1.3.0...v1.4.0) (2020-05-07)
+
+
+### Features
+
+* **env:** add `defaultValue` param to `get()` ([8b4e585](https://github.com/materya/carbon/commit/8b4e58500156417a4b7f9e1f5940248d4e6fb26a))
+
 ## [1.3.0](https://github.com/materya/carbon/compare/v1.2.0...v1.3.0) (2020-05-06)
 
 
