@@ -38,7 +38,10 @@ describe('up', () => {
 
   describe('when the file does not exist anywhere', () => {
     it('should raise an error', () => {
-      expect(() => find.up(fullPath, 'foo.json')).to.throw(FileNotFoundError)
+      expect(() => find.up(fullPath, filename)).to.throw(
+        FileNotFoundError,
+        `${filename} not found.`,
+      )
     })
   })
 })
