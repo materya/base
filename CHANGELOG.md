@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/materya/carbon/compare/v1.4.0...v1.5.0) (2020-05-08)
+
+
+### Features
+
+* add `fs.crawl` module ([84c0aa3](https://github.com/materya/carbon/commit/84c0aa37dc1916e65c990a4fdced3e35187902b6))
+
 ## [1.4.0](https://github.com/materya/carbon/compare/v1.3.0...v1.4.0) (2020-05-07)
 
 
