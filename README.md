@@ -27,6 +27,12 @@ Module dedicated to explore and manipulate filesystem related operations.
 |-|-|-|-|-|
 | `up` | `cwd`, `name` | File's full path | `FileNotFoundError` | Search a given file `name` in the current directory `cwd` and up the tree until it reaches the top. Will throw if no matching file is found. |
 
+#### `crawl`
+
+| name | params | returns | throws | description |
+|-|-|-|-|-|
+| `triggerOnFile` | `directory`, `action` | - | `Error` | Crawl from `directory`, triggering `action(name: string, path: string)` callback on each file found. |
+
 ### `env`
 
 Module dedicated to manage `process.env` and access environment variables.
