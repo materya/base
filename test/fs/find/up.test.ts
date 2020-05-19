@@ -1,8 +1,8 @@
 import * as fs from 'fs'
 import { expect } from 'chai'
 
-import { find } from '../../src/fs'
-import { FileNotFoundError } from '../../src/fs/errors'
+import { find } from '../../../src/fs'
+import { FileNotFoundError } from '../../../src/fs/errors'
 
 const basePath = '/tmp/materya_tests/fs.find'
 const filename = 'conf.json'
@@ -22,6 +22,7 @@ describe('up', () => {
     let cwd: string
     let filePath: string
 
+    // eslint-disable-next-line mocha/no-setup-in-describe
     tree.forEach((dir, index) => {
       it(`should find a file in ${dir}`, () => {
         cwd = `${basePath}/${tree.slice(0, index + 1).join('/')}`
