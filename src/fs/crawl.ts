@@ -71,7 +71,7 @@ export type FilesDirectory = {
  *
  * @throws {FileNotFoundError} if the path does not exist.
  */
-export const list = (path: string, depth = 0): FilesDirectory => {
+const list = (path: string, depth = 0): FilesDirectory => {
   try {
     fs.statSync(path).isDirectory()
   } catch (error) {
