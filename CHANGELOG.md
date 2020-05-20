@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/materya/carbon/compare/v1.5.0...v1.6.0) (2020-05-20)
+
+
+### Features
+
+* **fs:** add `list` method ([646f531](https://github.com/materya/carbon/commit/646f53173790d76a137db74a04e101a7454c5746))
+* **fs/crawl:** handle nicely missing directory ([2254635](https://github.com/materya/carbon/commit/22546352dca21dfc1bc5db0de9f393adaf22f696))
+
 ## [1.5.0](https://github.com/materya/carbon/compare/v1.4.0...v1.5.0) (2020-05-08)
 
 
