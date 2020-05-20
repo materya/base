@@ -23,23 +23,68 @@ Module dedicated to explore and manipulate filesystem related operations.
 
 #### `find`
 
-| name | params | returns | throws | description |
-|-|-|-|-|-|
-| `up` | `cwd`, `name` | File's full path | `FileNotFoundError` | Search a given file `name` in the current directory `cwd` and up the tree until it reaches the top. Will throw if no matching file is found. |
+##### `up`
+
+Search a given file `name` in the current directory `cwd` and up the tree until it reaches the top. Will throw if no matching file is found. 
+
+```ts
+import * as carbon from '@materya/carbon'
+
+const rcFileName = '.rc.json'
+
+const rcFilePath = carbon.find.up(process.cwd(), rcFileName)
+```
 
 #### `crawl`
 
-| name | params | returns | throws | description |
-|-|-|-|-|-|
-| `triggerOnFile` | `directory`, `action` | - | `Error` | Crawl from `directory`, triggering `action(name: string, path: string)` callback on each file found. |
+##### `list`
+
+Crawl from `directory`, sorting out files and directories until `depth` is reached.
+
+```ts
+import * as carbon from '@materya/carbon'
+
+const tree = carbon.crawl.list(process.cwd(), 2)
+
+/*
+> {
+  files: ['filename.ext', 'filename.ext'],
+  directories: {
+    somedir: {
+      files: ['filename.ext', 'filename.ext'],
+      directories: {},
+    },
+    ...
+  },
+}
+*/
+```
+
+##### trigger
+
+Crawl from `directory`, triggering `action(name: string, path: string)` callback on each file found. 
+
+```ts
+import * as carbon from '@materya/carbon'
+
+const action: FileActionCallback = (name, path) => { /* do something */ }
+
+carbon.crawl.trigger(process.cwd(), action)
+```
 
 ### `env`
 
 Module dedicated to manage `process.env` and access environment variables.
 
-| name | params | returns | throws | description |
-|-|-|-|-|-|
-| `get` | `name`, `[defaultValue]` | Variable value or default value | `MissingEnvironmentError` | Get a given `name` env variable. Will throw unless a `defaultValue` is provided. |
+#### `get`
+
+Get a given `name` env variable. Will throw unless a `defaultValue` is provided.
+
+```ts
+import * as carbon from '@materya/carbon'
+
+const myEnv = carbon.env.get('MY_ENV', 42)
+```
 
 ## License
 
