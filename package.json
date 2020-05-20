@@ -1,7 +1,7 @@
 {
   "name": "@materya/carbon",
   "description": "A collection of useful modules with a no-dependency, clean, tested and lightweight code philosophy.",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "author": "Sylver <sylver@materya.io>",
   "email": "sylver@materya.io",
   "homepage": "https://github.com/materya/carbon",
