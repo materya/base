@@ -21,17 +21,16 @@
     "declarationDir": "dist/@types",
     "baseUrl": ".",
     "outDir": "dist",
-    "paths": {
-      "src/*": [
-        "src/*"
-      ]
-    },
     "typeRoots": [
-      "node_modules/@types",
-      "src/@types"
+      "types",
+      "node_modules/@types"
     ]
   },
   "include": [
+    "types",
     "src"
-  ]
+  ],
+  "ts-node": {
+    "files": true
+  }
 }

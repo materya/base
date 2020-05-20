@@ -37,6 +37,26 @@ const rcFilePath = carbon.find.up(process.cwd(), rcFileName)
 
 #### `crawl`
 
+##### `list`
+
+Crawl from `directory`, listing all files sorted until `depth` is reached.
+
+```ts
+import * as carbon from '@materya/carbon'
+
+const list = carbon.crawl.list(process.cwd(), 2)
+
+/*
+> list
+[
+  'filename1.ext',
+  'filename2.ext',
+  'dir1/filename1.ext',
+  'dir1/filename2.ext',
+  'dir1/dir2/filename1.ext',
+]
+*/
+```
 ##### `tree`
 
 Crawl from `directory`, sorting out files and directories in a tree-like object until `depth` is reached.
@@ -47,7 +67,8 @@ import * as carbon from '@materya/carbon'
 const tree = carbon.crawl.tree(process.cwd(), 2)
 
 /*
-> {
+> tree
+{
   files: ['filename.ext', 'filename.ext'],
   directories: {
     somedir: {
