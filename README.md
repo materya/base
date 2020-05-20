@@ -37,14 +37,14 @@ const rcFilePath = carbon.find.up(process.cwd(), rcFileName)
 
 #### `crawl`
 
-##### `list`
+##### `tree`
 
-Crawl from `directory`, sorting out files and directories until `depth` is reached.
+Crawl from `directory`, sorting out files and directories in a tree-like object until `depth` is reached.
 
 ```ts
 import * as carbon from '@materya/carbon'
 
-const tree = carbon.crawl.list(process.cwd(), 2)
+const tree = carbon.crawl.tree(process.cwd(), 2)
 
 /*
 > {

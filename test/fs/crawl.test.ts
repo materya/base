@@ -36,17 +36,17 @@ describe('crawl', () => {
       expect(path).to.equals(`${basePath}/${name}`)
     }
 
-    crawl.triggerOnFile(basePath, cb)
+    crawl.trigger(basePath, cb)
   })
 
   it('should raise if directory does not exist', () => {
     const cb: FileActionCallback = (_name, _path): void => { /* do nothing */ }
-    expect(() => crawl.triggerOnFile('foo/bar', cb))
+    expect(() => crawl.trigger('foo/bar', cb))
       .to.throw(FileNotFoundError)
   })
 })
 
-describe('list', () => {
+describe('tree', () => {
   beforeEach(() => {
     mock({
       [basePath]: {
@@ -72,14 +72,14 @@ describe('list', () => {
   })
 
   it('should list current files without depth', () => {
-    expect(crawl.list(basePath)).to.deep.equal({
+    expect(crawl.tree(basePath)).to.deep.equal({
       files: ['file1', 'file2'],
       directories: {},
     })
   })
 
   it('should follow directories with one depth', () => {
-    expect(crawl.list(basePath, 1)).to.deep.equal({
+    expect(crawl.tree(basePath, 1)).to.deep.equal({
       files: ['file1', 'file2'],
       directories: {
         directory1: {
@@ -91,7 +91,7 @@ describe('list', () => {
   })
 
   it('should follow directories with more depths', () => {
-    expect(crawl.list(basePath, 2)).to.deep.equal({
+    expect(crawl.tree(basePath, 2)).to.deep.equal({
       files: ['file1', 'file2'],
       directories: {
         directory1: {
@@ -112,7 +112,7 @@ describe('list', () => {
   })
 
   it('should handle empty directories', () => {
-    expect(crawl.list(basePath, 5)).to.deep.equal({
+    expect(crawl.tree(basePath, 5)).to.deep.equal({
       files: ['file1', 'file2'],
       directories: {
         directory1: {
@@ -138,6 +138,6 @@ describe('list', () => {
   })
 
   it('should raise if directory does not exist', () => {
-    expect(() => crawl.list('foo/bar', 1)).to.throw(FileNotFoundError)
+    expect(() => crawl.tree('foo/bar', 1)).to.throw(FileNotFoundError)
   })
 })

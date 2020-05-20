@@ -22,7 +22,7 @@ export type FileActionCallback = (name: string, path: string) => void
  * @param {string | null} truncate - Part of the directory path to remove
  *  in the final filename.
  */
-const triggerOnFile = (
+const trigger = (
   directory: string,
   action: FileActionCallback,
   truncate: string | null = null,
@@ -37,7 +37,7 @@ const triggerOnFile = (
   fs.readdirSync(directory).forEach(item => {
     const path = `${directory}/${item}`
     if (fs.lstatSync(path).isDirectory()) {
-      triggerOnFile(path, action, prefix)
+      trigger(path, action, prefix)
     } else {
       const name = path.replace(RegExp(`^${prefix}/`), '')
       action(name, path)
@@ -71,7 +71,7 @@ export type FilesDirectory = {
  *
  * @throws {FileNotFoundError} if the path does not exist.
  */
-const list = (path: string, depth = 0): FilesDirectory => {
+const tree = (path: string, depth = 0): FilesDirectory => {
   try {
     fs.statSync(path).isDirectory()
   } catch (error) {
@@ -91,11 +91,11 @@ const list = (path: string, depth = 0): FilesDirectory => {
         ...acc.directories,
         ...(
           stat.isDirectory() && depth > 0
-            && { [file]: list(uri, depth - 1) }
+            && { [file]: tree(uri, depth - 1) }
         ),
       },
     }
   }, { files: [], directories: {} })
 }
 
-export default { list, triggerOnFile }
+export default { tree, trigger }
