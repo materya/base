@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/materya/carbon/compare/v1.6.1...v1.7.0) (2020-05-20)
+
+
+### Features
+
+* methods renaming ([24f9062](https://github.com/materya/carbon/commit/24f906257b1a2a559007935436ea0405019cbad4))
+
+
+### Bug Fixes
+
+* **export:** fail export on fs module ([c854b39](https://github.com/materya/carbon/commit/c854b39fcf91f74dbaa2feb23701f309be0d1805))
+
 ### [1.6.1](https://github.com/materya/carbon/compare/v1.6.0...v1.6.1) (2020-05-20)
 
 
