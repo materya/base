@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
-    "lib": [
-      "esnext"
-    ],
-    "target": "esnext",
+    "target": "es2017",
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
