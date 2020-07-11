@@ -109,8 +109,7 @@ describe('`crawl` module', () => {
     })
 
     it('should raise if directory does not exist', () => {
-      const cb: FileActionCallback = (_name, _path):
-        void => { /* - */ }
+      const cb: FileActionCallback = ($name, $path): void => { /* - */ }
       expect(() => crawl.trigger('foo/bar', cb))
         .to.throw(FileNotFoundError)
     })
