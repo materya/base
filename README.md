@@ -107,6 +107,62 @@ import * as carbon from '@materya/carbon'
 const myEnv = carbon.env.get('MY_ENV', 42)
 ```
 
+### `tools`
+
+Various utilities method to make life easier.
+
+#### `merge`
+
+Merge together nested arrays or maps.
+
+```ts
+import * as carbon from '@materya/carbon'
+
+const map1 = {
+  animals: {
+    cats: {
+      types: ['lion', 'tiger'],
+      props: {
+        run: true,
+        eat: true,
+        die: true,
+      },
+    },
+  },
+}
+const map2 = {
+  animals: {
+    cats: {
+      types: ['cheetah'],
+      props: {
+        fly: false,
+        die: false,
+      },
+    },
+  },
+  cars: ['audi', 'ford'],
+}
+
+const merged = carbon.tools.merge(map1, map2)
+
+/*
+> merged
+{
+  animals: {
+    cats: {
+      types: ['lion', 'tiger', 'cheetah'],
+      props: {
+        run: true,
+        eat: true,
+        die: false,
+        fly: false,
+      },
+    },
+    cars: ['audi', 'ford'],
+  },
+}
+*/
+```
 ## License
 
 [GPL-3.0](LICENSE)
