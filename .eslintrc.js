@@ -9,7 +9,7 @@ module.exports = {
     },
     'import/resolver': {
       typescript: {
-        'alwaysTryTypes': true,
+        alwaysTryTypes: true,
       },
     },
   },

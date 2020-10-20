@@ -1,14 +1,14 @@
 module.exports = {
   env: {
-      mocha: true,
+    mocha: true,
   },
   plugins: ['mocha'],
-  'extends': [
+  extends: [
     'plugin:mocha/recommended',
   ],
   rules: {
     'import/no-extraneous-dependencies': ['error', {
-      'devDependencies': ['**/*.test.ts', 'test/**/*'],
+      devDependencies: ['**/*.test.ts', 'test/**/*'],
     }],
     'mocha/no-mocha-arrows': ['off'],
     '@typescript-eslint/no-explicit-any': ['off'],
