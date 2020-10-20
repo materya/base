@@ -109,11 +109,13 @@ const myEnv = carbon.env.get('MY_ENV', 42)
 
 ### `tools`
 
-Various utilities method to make life easier.
+Various utility methods to make life easier.
 
 #### `merge`
 
-Merge together nested arrays or maps.
+Deep merge together nested arrays or maps.
+
+**NOTE**: The later sources keys take precedence over the previous same ones if a "conflict" arise.
 
 ```ts
 import * as carbon from '@materya/carbon'
@@ -128,6 +130,7 @@ const map1 = {
         die: true,
       },
     },
+    cars: ['dodge', 'ford'],
   },
 }
 const map2 = {
@@ -136,11 +139,11 @@ const map2 = {
       types: ['cheetah'],
       props: {
         fly: false,
-        die: false,
+        die: false, // it is well known that cats have 9 lives and don't die.
       },
     },
   },
-  cars: ['audi', 'ford'],
+  cars: ['audi', 'bmw'],
 }
 
 const merged = carbon.tools.merge(map1, map2)
@@ -158,7 +161,7 @@ const merged = carbon.tools.merge(map1, map2)
         fly: false,
       },
     },
-    cars: ['audi', 'ford'],
+    cars: ['dodge', 'ford', 'audi', 'bmw'],
   },
 }
 */
