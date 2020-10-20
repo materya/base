@@ -1,5 +1,10 @@
 #!make
 
+ifneq (,$(wildcard .env))
+	include .env
+	export $(shell sed 's/=.*//' .env)
+endif
+
 PM = npm
 RM = rm
 
@@ -12,6 +17,9 @@ COVERAGE = .nyc_output coverage
 
 .PHONY: all
 all: clean $(DIST)
+
+$(ENVFILE):
+	cp $(ENVFILE).defaults $(ENVFILE)
 
 $(MODULES):
 	$(PM) i
