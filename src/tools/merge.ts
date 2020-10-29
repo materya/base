@@ -1,8 +1,11 @@
-import { InconsistentSourceTypeError } from './errors'
 import { MissingArgumentsError } from '../errors'
 
 type SourceArray = Array<unknown>
-type SourceMap = Record<string, unknown>
+// Using `any` in `Record` here, since that's the only possible value
+// to match with interfaces atm.
+// issue => https://github.com/Microsoft/TypeScript/issues/15300
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type SourceMap = Record<string, any>
 type Source = SourceArray | SourceMap
 
 /**
@@ -15,35 +18,30 @@ type Source = SourceArray | SourceMap
  * @returns {[] | object} result - A flatten object or array of the given
  *  sources.
  */
-function merge (...sources: Source[]): Source {
+function merge <T extends Source> (...sources: Partial<T>[]): T {
   if (sources.length <= 1) throw new MissingArgumentsError(2, sources.length)
 
-  return sources.reduce<Source>((flatten, source) => {
-    const { toString } = Object.prototype
-    if (toString.call(source) !== toString.call(flatten)) {
-      throw new InconsistentSourceTypeError(
-        toString.call(source),
-        toString.call(flatten),
-      )
-    }
-
+  return sources.reduce<T>((flatten, source) => {
+    // Handling Arrays
     if (source instanceof Array) {
       return [
         ...flatten as SourceArray,
-        ...source.filter(e => !(flatten as SourceArray).includes(e)),
-      ]
+        ...source.filter((e: T) => !(flatten as SourceArray).includes(e)),
+      ] as T
     }
 
+    // Handling Maps
     const merged = Object.keys(source).reduce<SourceMap>((acc, k) => {
+      const element = (source as SourceMap)[k]
       const value = k in flatten
-        && (source[k] instanceof Array || source[k] instanceof Object)
-        ? merge((flatten as SourceMap)[k] as Source, source[k] as Source)
-        : source[k]
+        && (element instanceof Array || element instanceof Object)
+        ? merge((flatten as SourceMap)[k] as Partial<T>, element as Partial<T>)
+        : element
       return { ...acc, [k]: value }
     }, {})
 
     return { ...flatten, ...merged }
-  }, ((sources[0] instanceof Array) ? [] : {}) as Source)
+  }, ((sources[0] instanceof Array) ? [] : {}) as T)
 }
 
 export default merge
