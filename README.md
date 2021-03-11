@@ -178,5 +178,5 @@ const merged = carbon.tools.merge(map1, map2)
 [snyk-url]: https://app.snyk.io/test/github/materya/carbon?targetFile=package.json
 [codecov-image]: https://img.shields.io/codecov/c/github/materya/carbon/master.svg?style=flat-square
 [codecov-url]: https://codecov.io/gh/materya/carbon
-[license-image]: https://img.shields.io/npm/l/@materya/carbon.svg?style=flat-square
+[license-image]: https://img.shields.io/github/license/materya/carbon?style=flat-square
 [license-url]: LICENSE
