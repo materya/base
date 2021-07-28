@@ -15,7 +15,7 @@ describe('up', () => {
   })
 
   after(() => {
-    fs.rmdirSync(basePath, { recursive: true })
+    fs.rmSync(basePath, { recursive: true })
   })
 
   describe('when the file is somewhere along the path', () => {
