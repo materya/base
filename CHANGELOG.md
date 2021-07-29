@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.3](https://github.com/materya/carbon/compare/v1.9.2...v1.9.3) (2021-07-29)
+
+
+### Bug Fixes
+
+* **deps:** upgrade and vulnerabilities ([907d6c0](https://github.com/materya/carbon/commit/907d6c069492f070e49a1555402d744a7514dec5))
+
 ### [1.9.2](https://github.com/materya/carbon/compare/v1.9.1...v1.9.2) (2020-10-29)
 
 
