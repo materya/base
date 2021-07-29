@@ -81,7 +81,7 @@ const tree = carbon.crawl.tree(process.cwd(), 2)
 */
 ```
 
-##### trigger
+##### `trigger`
 
 Crawl from `directory`, triggering `action(name: string, path: string)` callback on each file found. 
 
