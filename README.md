@@ -3,6 +3,7 @@
 [![NPM version][npm-image]][npm-url]
 [![Dependency Status][david-image]][david-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
+[![tests][tests-image]][tests-url]
 [![codecov][codecov-image]][codecov-url]
 [![License][license-image]][license-url]
 
@@ -178,5 +179,7 @@ const merged = carbon.tools.merge(map1, map2)
 [snyk-url]: https://app.snyk.io/test/github/materya/carbon?targetFile=package.json
 [codecov-image]: https://img.shields.io/codecov/c/github/materya/carbon/master.svg?style=flat-square
 [codecov-url]: https://codecov.io/gh/materya/carbon
+[tests-image]: https://img.shields.io/github/workflow/status/materya/carbon/Tests?logo=github&style=flat-square
+[tests-url]: https://github.com/materya/carbon/actions/workflows/test.yml
 [license-image]: https://img.shields.io/github/license/materya/carbon?style=flat-square
 [license-url]: LICENSE
