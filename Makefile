@@ -22,7 +22,7 @@ $(ENVFILE):
 	cp $(ENVFILE).defaults $(ENVFILE)
 
 $(MODULES):
-	$(PM) i
+	$(PM) ci
 
 $(DIST): $(MODULES)
 	$(PM) run build
@@ -36,7 +36,7 @@ clean-all:
 	$(RM) -rf $(MODULES)
 
 .PHONY: test
-test:
+test: $(MODULES)
 	$(PM) t
 
 coverage:
