@@ -40,13 +40,8 @@
     "coverage:unit": "nyc --silent npm run test:unit",
     "coverage:report": "nyc report --reporter=lcov --reporter=text",
     "coverage:codecov": "codecov",
-    "vulnerabilities": "snyk monitor"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "lint-staged"
-    }
+    "vulnerabilities": "snyk monitor",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.ts": [

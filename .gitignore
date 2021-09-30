@@ -1,17 +1,13 @@
 # Exclude All
-**
+/*
 
 # Explicit includes
-!.github/
-!.github/**
-!.vscode/
-!.vscode/**
-!@types/
-!@types/**
-!src/
-!src/**
-!test/
-!test/**
+!.husky
+!.github
+!.vscode
+!@types
+!src
+!test
 !.dockerignore
 !.editorconfig
 !.eslintignore
