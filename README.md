@@ -16,6 +16,15 @@ lightweight code philosophy.
 npm i @materya/carbon
 ```
 
+## TOC
+
+- [Modules](#modules)
+  - [fs](#fs)
+  - [env](#env)
+  - [tools](#tools)
+- [Types](#types)
+
+
 ## Modules
 
 ### `fs`
@@ -167,6 +176,105 @@ const merged = carbon.tools.merge(map1, map2)
 }
 */
 ```
+
+## Types
+
+Carbon provides also a set of utility types.
+
+### `AssociativeArray`
+
+Since the standard type `object` is hard to use and error prone, this general type aims to replace it.
+
+See https://github.com/microsoft/TypeScript/issues/21732 for more details.
+
+```ts
+type AssociativeArray = Record<keyof any, unknown>
+```
+
+### `OptionalProps<Type>`
+
+Constructs a set of properties type by extracting all the optional keys from `Type`.
+
+```ts
+interface Todo {
+  title: string;
+  description?: string;
+  completed: boolean;
+}
+
+type TodoOptionalProps = OptionalProps<Todo>
+
+// type TodoOptionalProps = "description"
+```
+
+### `RequiredProps<Type>`
+
+Constructs a set of properties type by extracting all the required keys from `Type`.
+
+```ts
+interface Todo {
+  title: string;
+  description?: string;
+  completed: boolean;
+}
+
+type TodoRequiredProps = RequiredProps<Todo>
+
+// type TodoRequiredProps = "title" | "completed"
+```
+
+### `SelectivePartial<Type, Keys>`
+
+Constructs a type by picking all properties from `Type` and then switching `Keys` as optionals.
+
+
+```ts
+interface Todo {
+  title: string;
+  description?: string;
+  completed: boolean;
+  createdAt: number;
+  assignee: string;
+}
+
+type PartialTodo = SelectivePartial<Todo, 'createdAt' | 'assignee'>
+
+// type PartialTodo = {
+//   title: string; // Stays required
+//   description?: string;
+//   completed: boolean; // Stays required
+//   createdAt?: number;
+//   assignee?: string;
+// }
+```
+
+### `SelectiveRequired<Type, Keys>`
+
+Constructs a type by picking all properties from `Type` and then switching `Keys` as required.
+
+
+```ts
+interface Todo {
+  title: string;
+  description?: string;
+  completed: boolean;
+  createdAt: number;
+  assignee?: string;
+  reviewer?: string;
+}
+
+type RequiredTodo = SelectiveRequired<Todo, 'assignee' | 'reviewer'>
+
+// type PartialTodo = {
+//   title: string;
+//   description?: string; // Stays optional
+//   completed: boolean;
+//   createdAt: number;
+//   assignee: string;
+//   reviewer: string;
+// }
+```
+
 ## License
 
 [GPL-3.0](LICENSE)
