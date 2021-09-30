@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/materya/carbon/compare/v1.9.3...v1.10.0) (2021-09-30)
+
+
+### Features
+
+* **types:** Add a set of utility types ([7b688b9](https://github.com/materya/carbon/commit/7b688b9a1022a1596eff4b24924495eef5b8a9bf))
+
+
+### Bug Fixes
+
+* **devdeps:** upgrade and stick deps versions ([1fb5c6e](https://github.com/materya/carbon/commit/1fb5c6e96c9561c6e627b1a151f2935989a81330))
+
 ### [1.9.3](https://github.com/materya/carbon/compare/v1.9.2...v1.9.3) (2021-07-29)
 
 
