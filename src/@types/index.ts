@@ -38,7 +38,7 @@ export type OptionalProps<T extends AssociativeArray> = Exclude<{
  * Constructs a set of properties type by extracting all the required keys
  * from `Type`.
  */
-type RequiredKeys<T extends AssociativeArray> = Exclude<{
+export type RequiredProps<T extends AssociativeArray> = Exclude<{
   [K in keyof T]: T extends Record<K, T[K]>
     ? K
     : never
@@ -53,7 +53,7 @@ export type SelectivePartial<
   T extends AssociativeArray,
   K extends ObjectIndex,
 > = {
-  [P in Exclude<RequiredKeys<T>, K>] : T[P]
+  [P in Exclude<RequiredProps<T>, K>] : T[P]
 } & {
   [P in OptionalProps<T>]? : T[P]
 } & {
@@ -69,7 +69,7 @@ export type SelectiveRequired<
   T extends AssociativeArray,
   K extends ObjectIndex,
 > = {
-  [P in RequiredKeys<T>] : T[P]
+  [P in RequiredProps<T>] : T[P]
 } & {
   [P in Exclude<OptionalProps<T>, K>]? : T[P]
 } & {
