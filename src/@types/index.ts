@@ -85,5 +85,5 @@ export type SelectiveRequired<
 } & {
   [P in Exclude<OptionalProps<T>, K>]? : T[P]
 } & {
-  [P in Extract<keyof T, K>]: T[P]
+  [P in Extract<keyof T, K>]: Exclude<T[P], undefined>
 }
