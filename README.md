@@ -191,12 +191,31 @@ See https://github.com/microsoft/TypeScript/issues/21732 for more details.
 type AssociativeArray = Record<keyof any, unknown>
 ```
 
+### `CastIndexSignature<Type>`
+
+Workaround to fix an index signature issue with interfaces.
+
+See https://github.com/microsoft/TypeScript/issues/15300 for more details.
+
+```ts
+interface Todo {
+  title: string;
+  description?: string;
+  completed: boolean;
+}
+
+type TypeWithGenericObject<T extends Record<string | number | symbol, unknown>> = T
+
+let test1: TypeWithGenericObject<Todo> // Throw a ts(2344) error
+let test2: TypeWithGenericObject<CastIndexSignature<Todo>> // Works
+```
+
 ### `OptionalProps<Type>`
 
 Constructs a set of properties type by extracting all the optional keys from `Type`.
 
 ```ts
-interface Todo {
+type Todo = {
   title: string;
   description?: string;
   completed: boolean;
@@ -212,7 +231,7 @@ type TodoOptionalProps = OptionalProps<Todo>
 Constructs a set of properties type by extracting all the required keys from `Type`.
 
 ```ts
-interface Todo {
+type Todo = {
   title: string;
   description?: string;
   completed: boolean;
@@ -229,7 +248,7 @@ Constructs a type by picking all properties from `Type` and then switching `Keys
 
 
 ```ts
-interface Todo {
+type Todo = {
   title: string;
   description?: string;
   completed: boolean;
@@ -254,7 +273,7 @@ Constructs a type by picking all properties from `Type` and then switching `Keys
 
 
 ```ts
-interface Todo {
+type Todo = {
   title: string;
   description?: string;
   completed: boolean;

@@ -21,6 +21,18 @@ export type ObjectIndex = keyof any
 export type AssociativeArray = Record<ObjectIndex, unknown>
 
 /**
+ * CastIndexSignature<Type>
+ *
+ * Workaround to fix an index signature issue with interfaces.
+ *
+ * See https://github.com/microsoft/TypeScript/issues/15300 for more details.
+ */
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type CastIndexSignature<T extends object> = {
+  [K in keyof T]: T[K]
+}
+
+/**
  * OptionalProps<Type>
  *
  * Constructs a set of properties type by extracting all the optional keys
