@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/materya/carbon/compare/v1.10.0...v1.11.0) (2021-11-04)
+
+
+### Features
+
+* **types:** Add `CastIndexSignature<Type>` type ([99c06d2](https://github.com/materya/carbon/commit/99c06d2a3fb7353a2a954b00d116d25e287ec7d9))
+
+
+### Bug Fixes
+
+* **types:** missing export ([8bc85fa](https://github.com/materya/carbon/commit/8bc85fa422069f8e2793ca4a95de8ce0a4a7558d))
+
 ## [1.10.0](https://github.com/materya/carbon/compare/v1.9.3...v1.10.0) (2021-09-30)
 
 
