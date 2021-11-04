@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.2](https://github.com/materya/carbon/compare/v1.11.1...v1.11.2) (2021-11-04)
+
+
+### Bug Fixes
+
+* **types:** ensure no `undefined` in `SelectiveRequired<Type, Keys>` ([5d5f0ee](https://github.com/materya/carbon/commit/5d5f0eec3b0f85b93dd74df4442ecfc363e5491e))
+
 ### [1.11.1](https://github.com/materya/carbon/compare/v1.11.0...v1.11.1) (2021-11-04)
 
 ## [1.11.0](https://github.com/materya/carbon/compare/v1.10.0...v1.11.0) (2021-11-04)
