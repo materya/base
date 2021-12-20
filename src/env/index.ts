@@ -7,9 +7,7 @@ import { MissingEnvironmentError } from './errors'
  *
  * @param {string} name - environment variable name.
  * @param {string} [defaultValue] - default value if variable not found.
- *
  * @returns {string} the environment variable value.
- *
  * @throws {MissingEnvironmentError} if the env variable does not exist.
  */
 const get = (name: string, defaultValue?: string): string => {

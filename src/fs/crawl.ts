@@ -6,7 +6,6 @@ import { FileNotFoundError } from './errors'
  * Callback for adding two numbers.
  *
  * @callback FileActionCallback
- *
  * @param {string} name - Filename.
  * @param {string} path - Full file local path.
  */
@@ -17,7 +16,6 @@ export type FileActionCallback = (name: string, path: string) => void
  *
  * @typedef FilesDirectory
  * @type {object}
- *
  * @property {Array.<string>} files - List of local filenames.
  * @property {FilesDirectory} [directories] - List of directories.
  */
@@ -30,7 +28,6 @@ export type FilesDirectory = {
  * Crawl recursively in a given directory, triggering a callback for each file.
  *
  * @module crawl
- *
  * @param {string} directory - The directory to start in.
  * @param {FileActionCallback} action - Action to trigger for each file found.
  * @param {string | null} truncate - Part of the directory path to remove
@@ -63,12 +60,9 @@ const trigger = (
  * List all files recursively as a tree object from a given directory.
  *
  * @module crawl
- *
  * @param {string} path - A path to a directory to list.
  * @param {number} [depth] - How deep the files listing should recursively be.
- *
  * @returns {object} A list of files by directories.
- *
  * @throws {FileNotFoundError} if the path does not exist.
  */
 const tree = (path: string, depth = 0): FilesDirectory => {
@@ -103,12 +97,9 @@ const tree = (path: string, depth = 0): FilesDirectory => {
  * List all files recursively from a given directory.
  *
  * @module crawl
- *
  * @param {string} path - A path to a directory to list.
  * @param {number} [depth] - How deep the files listing should recursively be.
- *
  * @returns {Array.<string>} A list of files by directories.
- *
  * @throws {FileNotFoundError} if the path does not exist.
  */
 const list = (path: string, depth = 0): Array<string> => {

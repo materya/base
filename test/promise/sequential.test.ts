@@ -10,7 +10,9 @@ const callback = (r: CallableFunction) => (v: number): Promise<number> => {
 }
 
 const promise = async <T extends number>(v: T): Promise<T> => (
-  new Promise(resolve => setTimeout(callback(resolve), 50 / v, v))
+  new Promise(resolve => {
+    setTimeout(callback(resolve), 50 / v, v)
+  })
 )
 
 describe('sequential', () => {

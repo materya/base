@@ -12,11 +12,8 @@ type Source = SourceArray | SourceMap
  * Merge recursively arrays or maps.
  *
  * @module merge
- *
  * @param {[] | object} sources - pack of arrays or maps to merge together.
- *
- * @returns {[] | object} result - A flatten object or array of the given
- *  sources.
+ * @returns {[] | object} result - A flatten object or array of the given sources.
  */
 function merge <T extends Source> (...sources: Partial<T>[]): T {
   if (sources.length <= 1) throw new MissingArgumentsError(2, sources.length)

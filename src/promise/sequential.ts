@@ -2,13 +2,11 @@
  * Callback to execute on each sequence's array element.
  *
  * @callback SequentialCallBack
- *
  * @template T
  * @template U
  * @param {T} element - The element to apply the callback on.
  * @param {number} index - The element position in the reference array.
  * @param {Array.<T>} array - The reference array.
- *
  * @returns {Promise<U>} - A promise returning result operation on element.
  */
 
@@ -22,10 +20,8 @@ interface SequentialCallBack<T, U> {
  * This is for special use cases, most of the time you will want to use
  * `Promise.all()` to paralellize the run of all callbacks.
  *
- * @param {Array} array - The array to iterate the callback on.
- * @param {SequentialCallBack} callback - The promise callback to call on each
- *  array element.
- *
+ * @param {Array} array - Array to iterate the callback on.
+ * @param {SequentialCallBack} callback - Promise callback for each element.
  * @returns {Promise<Array>} A promise to the array of results from callbacks.
  */
 const sequential = async <T, U>(
