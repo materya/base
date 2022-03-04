@@ -177,6 +177,31 @@ const merged = carbon.tools.merge(map1, map2)
 */
 ```
 
+#### `pick`
+
+Extract specific keys from a given object and return a new one with only those keys.
+
+```ts
+import * as carbon from '@materya/carbon'
+
+const obj = {
+  a: 'foo',
+  b: 42,
+  c: 'bar',
+  d: { obj: 'foobar' },
+}
+
+const partialObj = carbon.tools.pick(obj)('b', 'd')
+
+/*
+> partialObj
+{
+  b: 42,
+  d: { obj: 'foobar' },
+}
+*/
+```
+
 ## Types
 
 Carbon provides also a set of utility types.
