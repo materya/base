@@ -19,12 +19,11 @@
     "baseUrl": ".",
     "outDir": "dist",
     "typeRoots": [
-      "types",
+      "src/@types",
       "node_modules/@types"
     ]
   },
   "include": [
-    "types",
     "src"
   ],
   "ts-node": {
