@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/materya/carbon/compare/v1.11.2...v1.12.0) (2022-03-04)
+
+
+### Features
+
+* **tools:** add `pick` method ([e7b0db0](https://github.com/materya/carbon/commit/e7b0db0ce0b974209792042b16600f86644b98a0))
+
 ### [1.11.2](https://github.com/materya/carbon/compare/v1.11.1...v1.11.2) (2021-11-04)
 
 
