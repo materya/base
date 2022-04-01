@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/materya/carbon/compare/v1.12.0...v1.13.0) (2022-04-01)
+
+
+### Features
+
+* **types:** add `Opaque` generic type ([300ccdd](https://github.com/materya/carbon/commit/300ccddbd834f99e47fa35bd2aab6e83feafb5c7))
+
+
+### Bug Fixes
+
+* **tools/pick:** do not include missing keys ([4edfd2a](https://github.com/materya/carbon/commit/4edfd2ae1ad6474f0fc2d5fa6898805d56075563))
+
 ## [1.12.0](https://github.com/materya/carbon/compare/v1.11.2...v1.12.0) (2022-03-04)
 
 
