@@ -51,7 +51,7 @@ describe('merge', () => {
     expect(result).to.deep.equal(match)
   })
 
-  it('should raise if not at least 2 sources are provided', async () => {
+  it('should raise if 2 sources are not at least provided', async () => {
     const source1 = { foo: 'bar' }
 
     expect(() => merge(source1)).to.throw(MissingArgumentsError)

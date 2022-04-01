@@ -25,4 +25,21 @@ describe('pick', () => {
       d: { obj: 'foobar' },
     })
   })
+
+  it('should handle optional parameters', async () => {
+    type Obj = {
+      a: string
+      b?: string
+      c: string
+    }
+    const obj: Obj = {
+      a: 'foo',
+      c: 'bar',
+    }
+
+    const result = pick(obj)('a', 'b')
+    expect(result).to.deep.equal({
+      a: 'foo',
+    })
+  })
 })
