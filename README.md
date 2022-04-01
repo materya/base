@@ -1,7 +1,6 @@
 # @materya/carbon
 
 [![NPM version][npm-image]][npm-url]
-[![Dependency Status][david-image]][david-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![tests][tests-image]][tests-url]
 [![codecov][codecov-image]][codecov-url]
@@ -347,8 +346,6 @@ type RequiredTodo = SelectiveRequired<Todo, 'assignee' | 'reviewer'>
 
 [npm-image]: https://img.shields.io/npm/v/@materya/carbon.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/@materya/carbon
-[david-image]: https://img.shields.io/david/materya/carbon.svg?style=flat-square
-[david-url]: https://david-dm.org/materya/carbon
 [snyk-image]: https://snyk.io/test/github/materya/carbon/badge.svg?style=flat-square
 [snyk-url]: https://app.snyk.io/test/github/materya/carbon?targetFile=package.json
 [codecov-image]: https://img.shields.io/codecov/c/github/materya/carbon/master.svg?style=flat-square
