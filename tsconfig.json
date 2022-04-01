@@ -15,11 +15,11 @@
     "preserveConstEnums": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "declarationDir": "dist/@types",
+    "declarationDir": "dist/types",
     "baseUrl": ".",
     "outDir": "dist",
     "typeRoots": [
-      "src/@types",
+      "src/types",
       "node_modules/@types"
     ]
   },

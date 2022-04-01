@@ -235,6 +235,28 @@ let test1: TypeWithGenericObject<Todo> // Throw a ts(2344) error
 let test2: TypeWithGenericObject<CastIndexSignature<Todo>> // Works
 ```
 
+### `Opaque<Alias, Type>`
+
+Type alias that makes a given standard `Type` like `string` unique by its `Alias` name.  
+Similar and inspired by Flow https://flow.org/en/docs/types/opaque-types/
+
+```ts
+type UniqueString = Opaque<'UniqueString', string>
+
+const uniqueString: UniqueString = 'foobar'
+const nonUniqueString = 'foobar'
+
+const f = (arg: UniqueString): UniqueString => arg
+
+f(nonUniqueString) // ts(2345) error: Argument of type 'string' is not assignable to parameter of type 'UniqueString'
+f(uniqueString) // Valid
+
+const f2 = (arg: string): string => arg
+
+f2(nonUniqueString) // Valid
+f2(uniqueString) // Valid, still a string
+```
+
 ### `OptionalProps<Type>`
 
 Constructs a set of properties type by extracting all the optional keys from `Type`.
@@ -309,7 +331,7 @@ type Todo = {
 
 type RequiredTodo = SelectiveRequired<Todo, 'assignee' | 'reviewer'>
 
-// type PartialTodo = {
+// type RequiredTodo = {
 //   title: string;
 //   description?: string; // Stays optional
 //   completed: boolean;

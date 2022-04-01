@@ -33,6 +33,16 @@ export type CastIndexSignature<T extends object> = {
 }
 
 /**
+ * Opaque<Alias, Type>
+ *
+ * Type alias that makes a given standard `Type` like `string` unique
+ * by its `Alias` name.
+ * Similar and inspired by Flow https://flow.org/en/docs/types/opaque-types/
+ */
+declare const tag: unique symbol
+export type Opaque<A, T> = T & { readonly [tag]: A }
+
+/**
  * OptionalProps<Type>
  *
  * Constructs a set of properties type by extracting all the optional keys

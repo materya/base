@@ -1,4 +1,4 @@
-import type { AssociativeArray } from '../@types'
+import type { AssociativeArray } from '../types'
 
 const pick = <T extends AssociativeArray>(obj: T) => (
   (...keys: Array<keyof T>): Pick<T, typeof keys[number]> => (
