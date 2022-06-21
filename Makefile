@@ -16,7 +16,7 @@ DIST = dist
 COVERAGE = .nyc_output coverage
 
 .PHONY: all
-all: clean $(DIST)
+all: $(DIST)
 
 $(ENVFILE):
 	cp $(ENVFILE).defaults $(ENVFILE)
@@ -24,7 +24,7 @@ $(ENVFILE):
 $(MODULES):
 	$(PM) ci
 
-$(DIST): $(MODULES)
+$(DIST): $(ENV) $(MODULES)
 	$(PM) run build
 
 .PHONY: clean
@@ -43,7 +43,7 @@ coverage:
 	$(PM) run coverage
 
 .PHONY: release
-release: $(DIST)
+release: clean all
 ifneq (,$(findstring n,$(MAKEFLAGS)))
 	+$(PM) run release -- --dry-run
 	+$(PM) $(PUBLISH_FLAGS) --dry-run
@@ -54,7 +54,7 @@ else
 endif
 
 .PHONY: prerelease
-prerelease: $(DIST)
+prerelease: clean all
 ifneq (,$(findstring n,$(MAKEFLAGS)))
 	+$(PM) run release -- --prerelease $(PRERELEASE_TAG) --dry-run
 	+$(PM) $(PUBLISH_FLAGS) --tag $(PRERELEASE_TAG) --dry-run
