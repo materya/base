@@ -97,3 +97,10 @@ export type SelectiveRequired<
 } & {
   [P in Extract<keyof T, K>]: Exclude<T[P], undefined>
 }
+
+/**
+ * UnionPick<Type, Values>
+ *
+ * Constructs a new type as a valid subset of a given union `Type` by picking up all given `Values` from it.
+ */
+export type UnionPick<T, U extends T> = U

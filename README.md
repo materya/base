@@ -340,6 +340,26 @@ type RequiredTodo = SelectiveRequired<Todo, 'assignee' | 'reviewer'>
 // }
 ```
 
+### `UnionPick<Type, Values>`
+
+Constructs a new type as a valid subset of a given union `Type` by picking up all given `Values` from it.
+
+```ts
+type FooBarBaz =
+  | 'foo'
+  | 'bar'
+  | 'baz'
+
+// Valid Type
+type FooBar = UnionPick<FooBarBaz, 'foo' | 'bar'>
+
+// Invalid Type
+type FooBer = UnionPick<FooBarBaz, 'foo' | 'ber'>
+//                                 ^^^^^^^^^^^^^
+// Type '"foo" | "ber"' does not satisfy the constraint 'FooBarBaz'.
+//   Type '"ber"' is not assignable to type 'FooBarBaz'.ts(2344)
+```
+
 ## License
 
 [GPL-3.0](LICENSE)
