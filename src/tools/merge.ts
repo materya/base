@@ -13,12 +13,8 @@ type Sources = DeepPartial<AssociativeArray>[] | SourceArray[]
 /**
  * Merge recursively arrays or maps.
  */
-function merge <
-  T extends DeepPartial<AssociativeArray>
-> (...sources: T[]): T
-function merge <
-  T extends SourceArray
-> (...sources: T[]): T
+function merge <T extends AssociativeArray> (...sources: DeepPartial<T>[]): T
+function merge <T extends SourceArray> (...sources: T[]): T
 function merge (...sources: Sources): Source {
   if (sources.length <= 1) throw new MissingArgumentsError(2, sources.length)
 
@@ -51,7 +47,7 @@ function merge (...sources: Sources): Source {
         && (isCompatible(element))
         && typeof element === typeof flatten[k]
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore : TS is stupid af
+        // @ts-ignore: TS is stupid af
         ? merge(flatten[k], element)
         : element
       return { ...acc, [k]: value }
