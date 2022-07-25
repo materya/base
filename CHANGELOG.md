@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/materya/carbon/compare/v1.14.1...v1.15.0) (2022-07-25)
+
+
+### Features
+
+* **tools:** add the `object` helper ([47bf10f](https://github.com/materya/carbon/commit/47bf10f612a40951439aae10eace4cc0f82111ff))
+* **types:** add `DeepPartial` and `DeepRequired` ([b8ddb78](https://github.com/materya/carbon/commit/b8ddb7806a46311e7059f30744e9dddf94da71a5))
+
+
+### Bug Fixes
+
+* **tools:** improve `merge` type and execution ([b062bea](https://github.com/materya/carbon/commit/b062bea8c565b389be1bac7b4e750997f00412ed))
+
 ### [1.14.1](https://github.com/materya/carbon/compare/v1.14.0...v1.14.1) (2022-06-21)
 
 ## [1.14.0](https://github.com/materya/carbon/compare/v1.13.0...v1.14.0) (2022-06-21)
