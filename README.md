@@ -120,6 +120,26 @@ const myEnv = carbon.env.get('MY_ENV', 42)
 
 Various utility methods to make life easier.
 
+#### `object`
+
+##### `isObject`
+
+Based on numerous threads and propositions across the internet (mainly SO), this method aims
+to identify with the best accuracy and the least complexity if a given value is an "object"
+(ie. an associative array).
+
+See all tests at [./test/tools/object.test.ts]()
+
+```ts
+import { tools } from '@materya/carbon'
+
+tools.object.isObject({}) // true
+tools.object.isObject([]) // false
+tools.object.isObject(() => null) // false
+tools.object.isObject((new Date())) // false
+// ...
+```
+
 #### `merge`
 
 Deep merge together nested arrays or maps.
