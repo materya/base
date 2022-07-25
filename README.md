@@ -234,6 +234,68 @@ let test1: TypeWithGenericObject<Todo> // Throw a ts(2344) error
 let test2: TypeWithGenericObject<CastIndexSignature<Todo>> // Works
 ```
 
+### `DeepPartial<Type>`
+
+Traverse a `Type` extending an object to switch all the props as optionals, recursively.
+
+```ts
+interface Todo {
+  title: string;
+  description: string;
+  metadata: {
+    foo: {
+      bar: {
+        ber: string;
+      };
+    };
+  };
+  completed: boolean;
+}
+
+type DeepPartialTodo: DeepPartial<Todo>
+// type DeepPartialTodo = {
+//   title?: string;
+//   description?: string;
+//   metadata?: {
+//     foo?: {
+//       bar?: {
+//         ber?: string;
+//       };
+//     };
+//   };
+```
+
+### `DeepRequired<Type>`
+
+Traverse a `Type` extending an object to switch all the props as required, recursively.
+
+```ts
+interface Todo {
+  title?: string;
+  description?: string;
+  metadata?: {
+    foo?: {
+      bar?: {
+        ber?: string;
+      };
+    };
+  };
+  completed?: boolean;
+}
+
+type DeepRequiredTodo: DeepRequired<Todo>
+// type DeepRequiredTodo = {
+//   title: string;
+//   description: string;
+//   metadata: {
+//     foo: {
+//       bar: {
+//         ber: string;
+//       };
+//     };
+//   };
+```
+
 ### `Opaque<Alias, Type>`
 
 Type alias that makes a given standard `Type` like `string` unique by its `Alias` name.  

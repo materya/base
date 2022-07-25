@@ -33,6 +33,26 @@ export type CastIndexSignature<T extends object> = {
 }
 
 /**
+ * DeepPartial<Type>
+ *
+ * Traverse a `Type` extending an object to switch all the props as optionals, recursively.
+ */
+export type DeepPartial<T extends AssociativeArray> = {
+  [K in keyof T]?: T[K] extends AssociativeArray ? DeepPartial<T[K]> : T[K]
+}
+
+/**
+ * DeepRequired<Type>
+ *
+ * Traverse a `Type` extending an object to switch all the props as required, recursively.
+ */
+export type DeepRequired<T extends AssociativeArray> = {
+  [K in keyof T]-?: NonNullable<T[K]> extends AssociativeArray
+    ? DeepRequired<NonNullable<T[K]>>
+    : T[K]
+}
+
+/**
  * Opaque<Alias, Type>
  *
  * Type alias that makes a given standard `Type` like `string` unique
