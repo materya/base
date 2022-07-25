@@ -1,44 +1,64 @@
 import { MissingArgumentsError } from '../errors'
+import { isObject } from './object'
+
+import type {
+  AssociativeArray,
+  DeepPartial,
+} from '../types'
 
 type SourceArray = Array<unknown>
-// Using `any` in `Record` here, since that's the only possible value
-// to match with interfaces atm.
-// issue => https://github.com/Microsoft/TypeScript/issues/15300
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SourceMap = Record<string, any>
-type Source = SourceArray | SourceMap
+type Source = SourceArray | DeepPartial<AssociativeArray>
+type Sources = DeepPartial<AssociativeArray>[] | SourceArray[]
 
 /**
  * Merge recursively arrays or maps.
- *
- * @module merge
- * @param {[] | object} sources - pack of arrays or maps to merge together.
- * @returns {[] | object} result - A flatten object or array of the given sources.
  */
-function merge <T extends Source> (...sources: Partial<T>[]): T {
+function merge <
+  T extends DeepPartial<AssociativeArray>
+> (...sources: T[]): T
+function merge <
+  T extends SourceArray
+> (...sources: T[]): T
+function merge (...sources: Sources): Source {
   if (sources.length <= 1) throw new MissingArgumentsError(2, sources.length)
 
-  return sources.reduce<T>((flatten, source) => {
-    // Handling Arrays
-    if (source instanceof Array) {
-      return [
-        ...flatten as SourceArray,
-        ...source.filter((e: T) => !(flatten as SourceArray).includes(e)),
-      ] as T
-    }
+  if (!(sources[0] instanceof Array) && !(isObject(sources[0]))) {
+    throw new Error('Sources type are incompatible')
+  }
 
-    // Handling Maps
-    const merged = Object.keys(source).reduce<SourceMap>((acc, k) => {
-      const element = (source as SourceMap)[k]
+  const isArrayMerge = (test: unknown[]): test is SourceArray[] => (
+    test[0] instanceof Array
+  )
+  const isCompatible = (test: unknown): test is Source => (
+    test instanceof Array || isObject(test)
+  )
+
+  // Handling Arrays
+  if (isArrayMerge(sources)) {
+    return sources.reduce((flatten, source) => (
+      [
+        ...flatten,
+        ...source.filter(e => !flatten.includes(e)),
+      ]
+    ), [])
+  }
+
+  // Handling Maps
+  return sources.reduce((flatten, source) => {
+    const merged = Object.keys(source).reduce((acc, k) => {
+      const element = source[k]
       const value = k in flatten
-        && (element instanceof Array || element instanceof Object)
-        ? merge((flatten as SourceMap)[k] as Partial<T>, element as Partial<T>)
+        && (isCompatible(element))
+        && typeof element === typeof flatten[k]
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore : TS is stupid af
+        ? merge(flatten[k], element)
         : element
       return { ...acc, [k]: value }
     }, {})
 
     return { ...flatten, ...merged }
-  }, ((sources[0] instanceof Array) ? [] : {}) as T)
+  }, {})
 }
 
 export default merge

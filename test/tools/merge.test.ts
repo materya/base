@@ -9,24 +9,31 @@ describe('merge', () => {
       foo: number
       bar: {
         ber: string
-        foobar: Record<string, string>
+        foobar: Record<string, unknown>
       }
     }
 
     const map1: Merger = {
       foo: 42,
-      bar: { ber: 'foo', foobar: { ber: 'bar' } },
+      bar: { ber: 'foo', foobar: { ber: 'bar', bar: [4, 5] } },
     }
     const map2: Partial<Merger> = {
-      bar: { foobar: { foo: 'foo' }, ber: 'bar' },
+      bar: { foobar: { foo: 'foo', bar: [1, 2, 3] }, ber: 'bar' },
     }
 
     const match: Merger = {
       foo: 42,
-      bar: { ber: 'bar', foobar: { ber: 'bar', foo: 'foo' } },
+      bar: {
+        ber: 'bar',
+        foobar: {
+          ber: 'bar',
+          foo: 'foo',
+          bar: [4, 5, 1, 2, 3],
+        },
+      },
     }
 
-    const result = merge<Merger>(map1, map2)
+    const result = merge(map1, map2)
 
     expect(result).to.deep.equal(match)
   })
