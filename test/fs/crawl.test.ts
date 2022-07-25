@@ -85,6 +85,7 @@ describe('`crawl` module', () => {
   describe('`trigger` method', () => {
     before(() => {
       mock({
+        /* eslint-disable @typescript-eslint/naming-convention */
         [basePath]: {
           bar: { ber: { 'img.png': 'content' } },
           foo: {
@@ -92,6 +93,7 @@ describe('`crawl` module', () => {
             'bar.txt': 'content',
           },
         },
+        /* eslint-enable @typescript-eslint/naming-convention */
       })
     })
 
