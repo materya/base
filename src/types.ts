@@ -28,20 +28,18 @@ export type CastIndexSignature<T extends object> = {
  *
  * Traverse a `Type` extending an object to switch all the props as optionals, recursively.
  */
-export type DeepPartial<T extends ObjectLiteral> = {
-  [K in keyof T]?: T[K] extends ObjectLiteral ? DeepPartial<T[K]> : T[K]
-}
+export type DeepPartial<T> = T extends ObjectLiteral ? {
+  [K in keyof T]?: DeepPartial<T[K]>
+} : T
 
 /**
  * DeepRequired<Type>
  *
  * Traverse a `Type` extending an object to switch all the props as required, recursively.
  */
-export type DeepRequired<T extends ObjectLiteral> = {
-  [K in keyof T]-?: NonNullable<T[K]> extends ObjectLiteral
-    ? DeepRequired<NonNullable<T[K]>>
-    : T[K]
-}
+export type DeepRequired<T> = T extends ObjectLiteral ? {
+  [K in keyof T]-?: DeepRequired<NonNullable<T[K]>>
+} : T
 
 /**
  * Opaque<Alias, Type>
