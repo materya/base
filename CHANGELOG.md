@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.2](https://github.com/materya/carbon/compare/v1.15.1...v1.15.2) (2022-07-26)
+
+
+### Bug Fixes
+
+* **tools:** `merge` handle partials properly ([03bc93e](https://github.com/materya/carbon/commit/03bc93e54e505fad331e0e6cd1d7b1492d6a0711))
+
 ### [1.15.1](https://github.com/materya/carbon/compare/v1.15.0...v1.15.1) (2022-07-25)
 
 
