@@ -25,9 +25,6 @@ function merge (...sources: Sources): Source {
   const isSourcesArray = (test: Source[]): test is SourceArray[] => (
     test[0] instanceof Array
   )
-  const isCompatible = (test: unknown): test is Source => (
-    test instanceof Array || isObject(test)
-  )
 
   // Handling Arrays
   if (isSourcesArray(sources)) {
@@ -44,10 +41,8 @@ function merge (...sources: Sources): Source {
     const merged = Object.keys(source).reduce((acc, k) => {
       const element = source[k]
       const value = k in flatten
-        && (isCompatible(element))
+        && (element instanceof Array || isObject(element))
         && typeof element === typeof flatten[k]
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore: TS is stupid af
         ? merge(flatten[k], element)
         : element
       return { ...acc, [k]: value }

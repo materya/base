@@ -2,7 +2,6 @@ import { expect } from 'chai'
 
 import { merge } from '../../src/tools'
 import { MissingArgumentsError } from '../../src/errors'
-import type { CastIndexSignature } from '../../src/types'
 
 describe('merge', () => {
   it('should merge maps', async () => {
@@ -40,32 +39,59 @@ describe('merge', () => {
   })
 
   it('should merge partial maps', async () => {
+    type Bar = {
+      foo: string
+    }
+
+    interface Foo {
+      bar: Bar
+      ber: string
+    }
+
     interface Merger {
       foo: number
       bar: {
-        ber: string
-        foobar: Record<string, unknown>
+        foo: Foo
+        ber: Record<string, unknown>
       }
     }
 
-    const map1: CastIndexSignature<Merger> = {
+    const map1: Merger = {
       foo: 42,
-      bar: { ber: 'foo', foobar: { ber: 'bar', bar: [4, 5] } },
+      bar: {
+        foo: {
+          bar: {
+            foo: 'foo',
+          },
+          ber: 'ber',
+        },
+        ber: { ber: 'bar', bar: [4, 5] },
+      },
     }
 
     const match: Merger = {
       foo: 42,
       bar: {
-        ber: 'foo',
-        foobar: {
+        foo: {
+          bar: {
+            foo: 'update',
+          },
+          ber: 'ber',
+        },
+        ber: {
           ber: 'bar',
-          foo: 'foo',
           bar: [4, 5],
         },
       },
     }
 
-    const result = merge(map1, { bar: { foobar: { foo: 'foo' } } })
+    const result = merge(map1, {
+      bar: {
+        foo: {
+          bar: { foo: 'update' },
+        },
+      },
+    })
 
     expect(result).to.deep.equal(match)
   })
