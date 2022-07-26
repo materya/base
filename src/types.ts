@@ -5,8 +5,11 @@
  * this general type aims to replace it.
  *
  * See https://github.com/microsoft/TypeScript/issues/21732 for more details.
+ * See also https://github.com/microsoft/TypeScript/issues/42825 about
+ * difference between `unknown` and `any` in this context
  */
-export type ObjectLiteral = Record<PropertyKey, unknown>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ObjectLiteral = Record<PropertyKey, any>
 
 /**
  * CastIndexSignature<Type>
