@@ -1,6 +1,6 @@
-import type { AssociativeArray } from '../types'
+import type { ObjectLiteral } from '../types'
 
-const pick = <T extends AssociativeArray>(obj: T) => (
+const pick = <T extends ObjectLiteral>(obj: T) => (
   (...keys: Array<keyof T>): Pick<T, typeof keys[number]> => (
     keys.reduce((newObj, k) => (
       Object.prototype.hasOwnProperty.call(obj, k)

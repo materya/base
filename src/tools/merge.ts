@@ -2,18 +2,18 @@ import { MissingArgumentsError } from '../errors'
 import { isObject } from './object'
 
 import type {
-  AssociativeArray,
+  ObjectLiteral,
   DeepPartial,
 } from '../types'
 
 type SourceArray = Array<unknown>
-type Source = SourceArray | AssociativeArray
-type Sources = DeepPartial<AssociativeArray>[] | SourceArray[]
+type Source = SourceArray | ObjectLiteral
+type Sources = DeepPartial<ObjectLiteral>[] | SourceArray[]
 
 /**
  * Merge recursively arrays or maps.
  */
-function merge <T extends AssociativeArray> (...sources: DeepPartial<T>[]): T
+function merge <T extends ObjectLiteral> (...sources: DeepPartial<T>[]): T
 function merge <T extends SourceArray> (...sources: T[]): T
 function merge (...sources: Sources): Source {
   if (sources.length <= 1) throw new MissingArgumentsError(2, sources.length)

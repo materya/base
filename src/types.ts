@@ -1,12 +1,12 @@
 /**
- * AssociativeArray
+ * ObjectLiteral
  *
  * Since the standard type `object` is hard to use and error prone,
  * this general type aims to replace it.
  *
  * See https://github.com/microsoft/TypeScript/issues/21732 for more details.
  */
-export type AssociativeArray = Record<PropertyKey, unknown>
+export type ObjectLiteral = Record<PropertyKey, unknown>
 
 /**
  * CastIndexSignature<Type>
@@ -25,8 +25,8 @@ export type CastIndexSignature<T extends object> = {
  *
  * Traverse a `Type` extending an object to switch all the props as optionals, recursively.
  */
-export type DeepPartial<T extends AssociativeArray> = {
-  [K in keyof T]?: T[K] extends AssociativeArray ? DeepPartial<T[K]> : T[K]
+export type DeepPartial<T extends ObjectLiteral> = {
+  [K in keyof T]?: T[K] extends ObjectLiteral ? DeepPartial<T[K]> : T[K]
 }
 
 /**
@@ -34,8 +34,8 @@ export type DeepPartial<T extends AssociativeArray> = {
  *
  * Traverse a `Type` extending an object to switch all the props as required, recursively.
  */
-export type DeepRequired<T extends AssociativeArray> = {
-  [K in keyof T]-?: NonNullable<T[K]> extends AssociativeArray
+export type DeepRequired<T extends ObjectLiteral> = {
+  [K in keyof T]-?: NonNullable<T[K]> extends ObjectLiteral
     ? DeepRequired<NonNullable<T[K]>>
     : T[K]
 }
@@ -56,7 +56,7 @@ export type Opaque<A, T> = T & { readonly [tag]: A }
  * Constructs a set of properties type by extracting all the optional keys
  * from `Type`.
  */
-export type OptionalProps<T extends AssociativeArray> = Exclude<{
+export type OptionalProps<T extends ObjectLiteral> = Exclude<{
   [K in keyof T]: T extends Record<K, T[K]>
     ? never
     : K
@@ -68,7 +68,7 @@ export type OptionalProps<T extends AssociativeArray> = Exclude<{
  * Constructs a set of properties type by extracting all the required keys
  * from `Type`.
  */
-export type RequiredProps<T extends AssociativeArray> = Exclude<{
+export type RequiredProps<T extends ObjectLiteral> = Exclude<{
   [K in keyof T]: T extends Record<K, T[K]>
     ? K
     : never
@@ -80,7 +80,7 @@ export type RequiredProps<T extends AssociativeArray> = Exclude<{
  * Constructs a type by picking all properties from `Type` and then switching `Keys` as optionals.
  */
 export type SelectivePartial<
-  T extends AssociativeArray,
+  T extends ObjectLiteral,
   K extends PropertyKey,
 > = {
   [P in Exclude<RequiredProps<T>, K>] : T[P]
@@ -96,7 +96,7 @@ export type SelectivePartial<
  * Constructs a type by picking all properties from `Type` and then switching `Keys` as required.
  */
 export type SelectiveRequired<
-  T extends AssociativeArray,
+  T extends ObjectLiteral,
   K extends PropertyKey,
 > = {
   [P in RequiredProps<T>] : T[P]

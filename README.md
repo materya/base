@@ -225,14 +225,14 @@ const partialObj = carbon.tools.pick(obj)('b', 'd')
 
 Carbon provides also a set of utility types.
 
-### `AssociativeArray`
+### `ObjectLiteral`
 
 Since the standard type `object` is hard to use and error prone, this general type aims to replace it.
 
 See https://github.com/microsoft/TypeScript/issues/21732 for more details.
 
 ```ts
-type AssociativeArray = Record<keyof any, unknown>
+type ObjectLiteral = Record<keyof any, unknown>
 ```
 
 ### `CastIndexSignature<Type>`
