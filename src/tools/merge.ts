@@ -7,7 +7,7 @@ import type {
 } from '../types'
 
 type SourceArray = Array<unknown>
-type Source = SourceArray | DeepPartial<AssociativeArray>
+type Source = SourceArray | AssociativeArray
 type Sources = DeepPartial<AssociativeArray>[] | SourceArray[]
 
 /**
@@ -22,7 +22,7 @@ function merge (...sources: Sources): Source {
     throw new Error('Sources type are incompatible')
   }
 
-  const isArrayMerge = (test: unknown[]): test is SourceArray[] => (
+  const isSourcesArray = (test: Source[]): test is SourceArray[] => (
     test[0] instanceof Array
   )
   const isCompatible = (test: unknown): test is Source => (
@@ -30,7 +30,7 @@ function merge (...sources: Sources): Source {
   )
 
   // Handling Arrays
-  if (isArrayMerge(sources)) {
+  if (isSourcesArray(sources)) {
     return sources.reduce((flatten, source) => (
       [
         ...flatten,
