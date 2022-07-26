@@ -1,16 +1,4 @@
 /**
- * ObjectIndex
- *
- * Allowed object (associative array) index types.
- *
- * `keyof any` results as `number | string | symbol`, we use it here instead
- * of hardcoding it to stay compatible if somewhere in the future
- * that may change.
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ObjectIndex = keyof any
-
-/**
  * AssociativeArray
  *
  * Since the standard type `object` is hard to use and error prone,
@@ -18,7 +6,7 @@ export type ObjectIndex = keyof any
  *
  * See https://github.com/microsoft/TypeScript/issues/21732 for more details.
  */
-export type AssociativeArray = Record<ObjectIndex, unknown>
+export type AssociativeArray = Record<PropertyKey, unknown>
 
 /**
  * CastIndexSignature<Type>
@@ -93,7 +81,7 @@ export type RequiredProps<T extends AssociativeArray> = Exclude<{
  */
 export type SelectivePartial<
   T extends AssociativeArray,
-  K extends ObjectIndex,
+  K extends PropertyKey,
 > = {
   [P in Exclude<RequiredProps<T>, K>] : T[P]
 } & {
@@ -109,7 +97,7 @@ export type SelectivePartial<
  */
 export type SelectiveRequired<
   T extends AssociativeArray,
-  K extends ObjectIndex,
+  K extends PropertyKey,
 > = {
   [P in RequiredProps<T>] : T[P]
 } & {
