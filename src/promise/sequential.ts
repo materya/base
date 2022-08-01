@@ -1,17 +1,9 @@
 /**
  * Callback to execute on each sequence's array element.
- *
- * @callback SequentialCallBack
- * @template T
- * @template U
- * @param {T} element - The element to apply the callback on.
- * @param {number} index - The element position in the reference array.
- * @param {Array.<T>} array - The reference array.
- * @returns {Promise<U>} - A promise returning result operation on element.
  */
 
 interface SequentialCallBack<T, U> {
-  (element: T, index: number, array: Array<T>): Promise<U>
+  (element: T, index: number, array: readonly T[]): Promise<U>
 }
 
 /**
@@ -19,20 +11,18 @@ interface SequentialCallBack<T, U> {
  *
  * This is for special use cases, most of the time you will want to use
  * `Promise.all()` to paralellize the run of all callbacks.
- *
- * @param {Array} array - Array to iterate the callback on.
- * @param {SequentialCallBack} callback - Promise callback for each element.
- * @returns {Promise<Array>} A promise to the array of results from callbacks.
  */
 const sequential = async <T, U>(
-  array: Array<T>,
+  array: readonly T[],
   callback: SequentialCallBack<T, U>,
-): Promise<Array<U>> => {
-  const results = []
+): Promise<U[]> => {
+  const results: U[] = []
+
   for (let index = 0; index < array.length; index++) {
     // eslint-disable-next-line no-await-in-loop
     results.push(await callback(array[index], index, array))
   }
+
   return results
 }
 
