@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/materya/carbon/compare/v2.0.0...v2.0.1) (2022-08-01)
+
+
+### Bug Fixes
+
+* **promise/sequential:** makes array param as readonly ([3a7557b](https://github.com/materya/carbon/commit/3a7557b05655449a6cc5d0c84d63261650fafff6))
+
 ## [2.0.0](https://github.com/materya/carbon/compare/v1.15.2...v2.0.0) (2022-07-26)
 
 
