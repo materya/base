@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/materya/carbon/compare/v1.15.2...v3.0.0) (2022-08-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **types:** widen `ObjectLiteral` match
+* **types:** Rename `AssociativeArray` to `ObjectLiteral`
+
+### Features
+
+* **types:** remove `ObjectIndex` ([affa491](https://github.com/materya/carbon/commit/affa4912df0a7a30797844669b1d14a29b79d12e))
+* **types:** Rename `AssociativeArray` to `ObjectLiteral` ([644e3f2](https://github.com/materya/carbon/commit/644e3f2eac65cf4c0f65c50e2fb2ebce68fcc1ce))
+* **types:** widen `ObjectLiteral` match ([bb93ed0](https://github.com/materya/carbon/commit/bb93ed0c4bfa470a8533ac82ede6e6519f5119df))
+
+
+### Bug Fixes
+
+* **promise/sequential:** makes array param as readonly ([5c330b9](https://github.com/materya/carbon/commit/5c330b94672132c8eb1632a62eb2b8e456b2c53c))
+* **tools:** improve `merge` ([34c1d88](https://github.com/materya/carbon/commit/34c1d88ab102e43fac6d4386da354e21463bd86a))
+* **types:** improve `DeepPartial` & `DeepRequired` signature ([a62adae](https://github.com/materya/carbon/commit/a62adae00a2a5fe52320896184177182c62050e0))
+
 ## [2.0.0](https://github.com/materya/carbon/compare/v1.15.2...v2.0.0) (2022-07-26)
 
 
