@@ -121,4 +121,40 @@ describe('merge', () => {
 
     expect(() => merge(source1)).to.throw(MissingArgumentsError)
   })
+
+  type TypeWithUnion = {
+    foo: {
+      bar: number[] | { ber: string } | number
+    }
+  }
+
+  const unionsTest: {
+    map1: TypeWithUnion
+    map2: TypeWithUnion
+    match: TypeWithUnion
+  }[] = [{
+    map1: { foo: { bar: [1, 2] } },
+    map2: { foo: { bar: { ber: 'foo' } } },
+    match: { foo: { bar: { ber: 'foo' } } },
+  }, {
+    map1: { foo: { bar: { ber: 'foo' } } },
+    map2: { foo: { bar: [1, 2] } },
+    match: { foo: { bar: [1, 2] } },
+  }, {
+    map1: { foo: { bar: [1, 2] } },
+    map2: { foo: { bar: 1 } },
+    match: { foo: { bar: 1 } },
+  }, {
+    map1: { foo: { bar: 1 } },
+    map2: { foo: { bar: [1, 2] } },
+    match: { foo: { bar: [1, 2] } },
+  }]
+  // eslint-disable-next-line mocha/no-setup-in-describe
+  unionsTest.forEach(({ map1, map2, match }) => {
+    it('should override if type are differents (union)', async () => {
+      const result = merge(map1, map2)
+
+      expect(result).to.deep.equal(match)
+    })
+  })
 })
