@@ -15,6 +15,7 @@
 !.gitattributes
 !.gitignore
 !.mocharc.js
+!.npmrc
 !.nycrc
 !CHANGELOG.md
 !Dockerfile
