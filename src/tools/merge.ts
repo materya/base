@@ -43,6 +43,8 @@ function merge (...sources: Sources): Source {
       const value = k in flatten
         && (element instanceof Array || isObject(element))
         && typeof element === typeof flatten[k]
+        && !(element instanceof Array && isObject(flatten[k]))
+        && !(flatten[k] instanceof Array && isObject(element))
         ? merge(flatten[k], element)
         : element
       return { ...acc, [k]: value }
