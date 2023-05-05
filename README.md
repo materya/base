@@ -221,6 +221,31 @@ const partialObj = carbon.tools.pick(obj)('b', 'd')
 */
 ```
 
+#### `exclude`
+
+Exclude specific keys from a given object and return a new one without those keys.
+
+```ts
+import * as carbon from '@materya/carbon'
+
+const obj = {
+  a: 'foo',
+  b: 42,
+  c: 'bar',
+  d: { obj: 'foobar' },
+}
+
+const partialObj = carbon.tools.exclude(obj)('b', 'd')
+
+/*
+> partialObj
+{
+  a: 'foo',
+  c: 'bar',
+}
+*/
+```
+
 ## Types
 
 Carbon provides also a set of utility types.
