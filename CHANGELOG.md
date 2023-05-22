@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/materya/carbon/compare/v2.1.0...v2.2.0) (2023-05-22)
+
+
+### Features
+
+* **tools:** add the exclude helper ([1bd5d47](https://github.com/materya/carbon/commit/1bd5d47f8d98b5bd2adff410418b61e0982f6451))
+
 ## [2.1.0](https://github.com/materya/carbon/compare/v2.0.1...v2.1.0) (2023-03-02)
 
 
